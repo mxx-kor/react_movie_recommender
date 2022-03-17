@@ -20,7 +20,7 @@ class App extends React.Component {
     return <section className="container">{isLoading 
       ? (<div className="loader"><span className="loader__text">Loading...</span></div>) : movies.map(movie => (
       <div key={movie.id} className="movies"><Movie id={movie.id} year={movie.year} title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} genres={movie.genres} runtime={movie.runtime} /></div>
-    ))}</section>
+    ))}<div>확인</div></section>
   }
 }
 

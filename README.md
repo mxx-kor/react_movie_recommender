@@ -10,4 +10,4 @@
 
 > Vanilla JS와 React JS를 이용해 웹앱을 구성함
 
-
+현재 수정중 Apollo와 GraphQl을 활용한 영화웹으로 개발할 예정

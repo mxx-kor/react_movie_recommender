@@ -58,7 +58,6 @@ const Movies = styled.div`
 
 export default () => {
     const { loading, data } = useQuery(GET_MOVIES);
-    console.log(loading, data)
     return (
         <Container>
             <Header>

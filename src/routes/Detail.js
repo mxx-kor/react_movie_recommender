@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
+import Movie from "../components/Movie";
 import styled from "styled-components";
 
 const GET_MOVIE = gql`
@@ -12,26 +13,33 @@ const GET_MOVIE = gql`
             rating
             description_intro
         }
+        suggestions(id: $id){
+          id
+          medium_cover_image
+        }
     }
 `
 
 const Container = styled.div`
-  height: 100vh;
   background-image: linear-gradient(-45deg, #d754ab, #fd723a);
   width: 100%;
+`;
+
+const Row = styled.div`
+  padding-top: 5%;
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
   color: white;
 `;
 
 const Column = styled.div`
-  margin-left: 10px;
-  width: 50%;
+  width: 50%
 `;
 
 const Title = styled.h1`
   font-size: 65px;
+  font-weight: bold;
   margin-bottom: 15px;
 `;
 
@@ -41,18 +49,37 @@ const Subtitle = styled.h4`
 `;
 
 const Description = styled.p`
+  letter-spacing: -1px;
+  height: 300px;
   font-size: 28px;
   width: 75%;
+  overflow: auto;
 `;
 
 const Poster = styled.div`
-  width: 20%;
-  height: 60%;
-  background-image: url(${props => props.bg});
+  width: 250px;
+  height: 400px;
+  background-image: url(${props => props.bg}), url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png);
   background-size: cover;
   background-position: center;
   background-color: transparent;
   border-radius: 5px;
+`;
+
+const SgTitle = styled.h1`
+  padding-top: 5%;
+  margin-left: 15%;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+`
+
+const Suggestion = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 70px;
+  width: 80%;
+  padding-bottom: 20px
 `;
 
 export default () => {
@@ -62,16 +89,20 @@ export default () => {
     });
     return (
         <Container>
-            <Column>
+            <Row>
+              <Column>
                 <Title>{loading ? "Loading..." : data.movie.title}</Title>
-                {!loading && data.movie && (
-                    <>
-                        <Subtitle>{data.movie.language === "en" ? "English" : data.movie.language} · {data.movie.rating}</Subtitle>
-                        <Description>{data.movie.description_intro}</Description>
-                    </>
-                )}
-            </Column>
-            <Poster bg={data && data.movie ? data.movie.medium_cover_image: ""}></Poster>
+                <Subtitle>{data?.movie?.language === "en" ? "English" : data?.movie?.language} · {data?.movie?.rating}</Subtitle>
+                <Description>{data?.movie?.description_intro}</Description>
+              </Column>
+              <Poster bg={data?.movie?.medium_cover_image}></Poster>
+            </Row>
+            <SgTitle>{loading ? "추천 영화 불러오는중..." : "More Suggestions"}</SgTitle>
+            <Row>
+              <Suggestion>
+                {data?.suggestions?.map(m => (<Movie key={m.id} id={m.id} bg={m.medium_cover_image} />))}
+              </Suggestion>
+            </Row>
         </Container>
     )
 };

@@ -11,7 +11,7 @@ const Container = styled.div`
 `;
 
 const Poster = styled.div`
-  background-image: url(${props => props.bg});
+  background-image: url(${props => props.bg}), url(https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png);
   height: 100%;
   width: 100%;
   background-size: cover;

@@ -16,6 +16,7 @@ const GET_MOVIE = gql`
         suggestions(id: $id){
           id
           medium_cover_image
+          isLiked @client
         }
     }
 `
@@ -100,7 +101,7 @@ export default () => {
             <SgTitle>{loading ? "추천 영화 불러오는중..." : "More Suggestions"}</SgTitle>
             <Row>
               <Suggestion>
-                {data?.suggestions?.map(m => (<Movie key={m.id} id={m.id} bg={m.medium_cover_image} />))}
+                {data?.suggestions?.map(m => (<Movie key={m.id} id={m.id} isLiked={m.isLiked} bg={m.medium_cover_image} />))}
               </Suggestion>
             </Row>
         </Container>

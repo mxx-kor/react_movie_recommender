@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LIKE_MOVIE = gql`
-  mutation likeMovie($id: Int!){
-    likeMovie(id: $id) @client
+  mutation toggleLike($id: Int!){
+    toggleLike(id: $id) @client
   }
 `
 
@@ -27,13 +27,13 @@ const Poster = styled.div`
 `;
 
 export default ({ id, bg, isLiked }) => {
-  const [likeMovie] = useMutation(LIKE_MOVIE, { variables: { id: +id } });
+  const [toggleLike] = useMutation(LIKE_MOVIE, { variables: { id: +id } });
   return (
     <Container>
       <Link to={`/${id}`}>
         <Poster bg={bg} />
       </Link>
-      <button onClick={likeMovie}>{isLiked ? "💔" : "💖"}</button>
+      <button onClick={toggleLike}>{isLiked ? "Unlike 💔" : "Like 💖"}</button>
     </Container>
   )
 };

@@ -9,9 +9,9 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
             isLiked: {
               merge(existing, incoming){
                 if(existing){
-                return existing;
+                  return existing;
                 }else{
-                return incoming;
+                  return incoming;
                 }
               }
             }

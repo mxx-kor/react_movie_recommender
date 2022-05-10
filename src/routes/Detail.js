@@ -1,8 +1,9 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import Movie from "../components/Movie";
 import styled from "styled-components";
+import { AiFillHome } from "react-icons/ai";
 
 const GET_MOVIE = gql`
     query getMovie($id: Int!){
@@ -85,6 +86,11 @@ const Suggestion = styled.div`
   padding-bottom: 20px
 `;
 
+const Nav = styled.div`
+    padding-top: 20px;
+    margin-left: 30px;
+`
+
 export default () => {
     const { id } = useParams();
     const { loading, data } = useQuery(GET_MOVIE, {
@@ -92,20 +98,25 @@ export default () => {
     });
     return (
         <Container>
-            <Row>
-              <Column>
-                <Title>{loading ? "Loading..." : `${data.movie.title} ${data.movie.isLiked ? "💖" : ""}`}</Title>
-                <Subtitle>{data?.movie?.language === "en" ? "English" : data?.movie?.language} · {data?.movie?.rating}</Subtitle>
-                <Description>{data?.movie?.description_intro}</Description>
-              </Column>
-              <Poster bg={data?.movie?.medium_cover_image}></Poster>
-            </Row>
-            <SgTitle>{loading ? "추천 영화 불러오는중..." : "More Suggestions"}</SgTitle>
-            <Row>
-              <Suggestion>
-                {data?.suggestions?.map(m => (<Movie key={m.id} id={m.id} isLiked={m.isLiked} bg={m.medium_cover_image} />))}
-              </Suggestion>
-            </Row>
+          <Nav>
+            <Link to="/">
+              <AiFillHome color="white" size="40" />
+            </Link>
+          </Nav>
+          <Row>
+            <Column>
+              <Title>{loading ? "Loading..." : `${data.movie.title} ${data.movie.isLiked ? "💖" : ""}`}</Title>
+              <Subtitle>{data?.movie?.language === "en" ? "English" : data?.movie?.language} · {data?.movie?.rating}</Subtitle>
+              <Description>{data?.movie?.description_intro}</Description>
+            </Column>
+            <Poster bg={data?.movie?.medium_cover_image}></Poster>
+          </Row>
+          <SgTitle>{loading ? "추천 영화 불러오는중..." : "More Suggestions"}</SgTitle>
+          <Row>
+            <Suggestion>
+              {data?.suggestions?.map(m => (<Movie key={m.id} id={m.id} isLiked={m.isLiked} bg={m.medium_cover_image} />))}
+            </Suggestion>
+          </Row>
         </Container>
     )
 };

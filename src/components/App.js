@@ -6,8 +6,8 @@ import Detail from "../routes/Detail";
 function App() {
   return <Router>
     <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route path="/:id" element={<Detail />} />
+      <Route exact path="/react_movie_recommender/" element={<Home />} />
+      <Route path="/react_movie_recommender/:id" element={<Detail />} />
     </Routes>
   </Router>
 }

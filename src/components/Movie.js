@@ -42,7 +42,7 @@ export default ({ id, bg, isLiked }) => {
   const [toggleLike] = useMutation(LIKE_MOVIE, { variables: { id: +id } });
   return (
     <Container>
-      <Link to={`/${id}`}>
+      <Link to={`/react_movie_recommender/${id}`}>
         <Poster bg={bg} />
       </Link>
       <LikeBtn onClick={toggleLike}>{isLiked ? "Unlike 💔" : "Like 💖"}</LikeBtn>

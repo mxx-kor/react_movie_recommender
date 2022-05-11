@@ -99,7 +99,7 @@ export default () => {
     return (
         <Container>
           <Nav>
-            <Link to="/">
+            <Link to="/react_movie_recommender/">
               <AiFillHome color="white" size="40" />
             </Link>
           </Nav>

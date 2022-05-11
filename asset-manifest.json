@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react_movie_recommender/static/js/main.40c7826c.js",
+    "main.js": "/react_movie_recommender/static/js/main.d86b027c.js",
     "index.html": "/react_movie_recommender/index.html",
-    "main.40c7826c.js.map": "/react_movie_recommender/static/js/main.40c7826c.js.map"
+    "main.d86b027c.js.map": "/react_movie_recommender/static/js/main.d86b027c.js.map"
   },
   "entrypoints": [
-    "static/js/main.40c7826c.js"
+    "static/js/main.d86b027c.js"
   ]
 }

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 import styled from 'styled-components'
 import Movie from "../components/Movie";
+import { AiFillHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const GET_MOVIES = gql`
     {
@@ -23,20 +25,23 @@ const Header = styled.header`
   background-image: linear-gradient(-45deg, #d754ab, #fd723a);
   height: 45vh;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 `;
 
 const Title = styled.h1`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 60px;
   font-weight: 600;
   margin-bottom: 20px;
 `;
 
 const Subtitle = styled.h3`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 35px;
 `;
 
@@ -56,12 +61,26 @@ const Movies = styled.div`
   top: -50px;
 `;
 
+const Nav = styled.div` 
+    display: flex;
+    justify-content: end;
+    padding-top: 20px;
+    margin-right: 30px;  
+`
+
 
 export default () => {
     const { loading, data } = useQuery(GET_MOVIES);
+    const [num, setNum] = useState(0);
+
     return (
         <Container>
             <Header>
+                <Nav>
+                  <Link to={"/react_movie_recommender/liked"}>
+                    <AiFillHeart color="white" size="40" />
+                  </Link>
+                </Nav>
                 <Title>Movie Recommender</Title>
                 <Subtitle>with React, GraphQL</Subtitle>
             </Header>

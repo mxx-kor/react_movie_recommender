@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import styled from 'styled-components'
 import Movie from "../components/Movie";
@@ -68,17 +68,35 @@ const Nav = styled.div`
     margin-right: 30px;  
 `
 
+const Liked = styled.div`
+  position: relative;
+`
+
+const Badge = styled.div`
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    padding:5px 7px;
+    color:#fff;
+    background-color:#bf1f1f;
+    font-size:10px;
+    border-radius:20px;
+    border:solid 1px #c93a3a;
+`
+
 
 export default () => {
     const { loading, data } = useQuery(GET_MOVIES);
-    const [num, setNum] = useState(0);
 
     return (
         <Container>
             <Header>
                 <Nav>
                   <Link to={"/react_movie_recommender/liked"}>
-                    <AiFillHeart color="white" size="40" />
+                    <Liked>
+                      <AiFillHeart color="white" size="40" />
+                      {loading ? "" :  <Badge>{(data?.movies?.filter((m) => m.isLiked)).length}</Badge>}
+                    </Liked>
                   </Link>
                 </Nav>
                 <Title>Movie Recommender</Title>

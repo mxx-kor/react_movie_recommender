@@ -105,7 +105,7 @@ export default () => {
           </Nav>
           <Row>
             <Column>
-              <Title>{loading ? "Loading..." : `${data.movie.title} ${data.movie.isLiked ? "💖" : ""}`}</Title>
+              <Title>{loading ? "Loading..." : `${data?.movie?.title} ${data?.movie?.isLiked ? "💖" : ""}`}</Title>
               <Subtitle>{data?.movie?.language === "en" ? "English" : data?.movie?.language} · {data?.movie?.rating}</Subtitle>
               <Description>{data?.movie?.description_intro}</Description>
             </Column>

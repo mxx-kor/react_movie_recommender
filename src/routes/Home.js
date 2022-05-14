@@ -74,8 +74,8 @@ const Liked = styled.div`
 
 const Badge = styled.div`
     position: absolute;
-    top: 25px;
-    right: 0px;
+    top: 23px;
+    right: -5px;
     padding:5px 7px;
     color:#fff;
     background-color:#bf1f1f;

@@ -62,7 +62,6 @@ const Nav = styled.div`
 
 const LikedMovies = () => {
     const { loading, data } = useQuery(GET_LIKED);
-    console.log(data?.movies?.filter((m) => m.suggestions))
 
     return (
         <Container>

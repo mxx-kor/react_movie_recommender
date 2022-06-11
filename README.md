@@ -45,6 +45,14 @@
 
 ---
 
+### 프리뷰
+
+![image](https://user-images.githubusercontent.com/82329983/173176471-9e7ab37b-893e-4bae-9dd6-10d71762256c.png)
+
+![image](https://user-images.githubusercontent.com/82329983/173176508-2ead85fb-d238-4767-b6ed-e923facc9382.png)
+
+![image](https://user-images.githubusercontent.com/82329983/173176522-92f8b140-ca25-4e39-988a-6ea59c7c89b6.png)
+
 업데이트 이전의 프로젝트
 
 ## 개발 목표
@@ -59,7 +67,7 @@
 
 > Vanilla JS와 React JS를 이용해 웹앱을 구성함
 
-## 프리뷰
+## 업데이트 이전 프리뷰
 
 ![image](https://user-images.githubusercontent.com/82329983/167091813-b32c0b2c-1d09-4d4c-a1a7-76c303b6ffb2.png)
 
